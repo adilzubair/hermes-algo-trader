@@ -1,0 +1,2 @@
+[console_scripts]
+rbi-trader = rbi_trader.cli:main

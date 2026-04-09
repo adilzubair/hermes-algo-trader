@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rbi-trader"
+version = "0.1.0"
+description = "Autonomous research, backtest, and Alpaca execution pipeline for BB Squeeze ADX trading."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "alpaca-py>=0.43.2",
+  "numpy>=2.2.6",
+  "pandas>=2.3.3",
+  "python-dotenv>=1.0.1",
+  "PyYAML>=6.0.2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=9.0.3"]
+
+[project.scripts]
+rbi-trader = "rbi_trader.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

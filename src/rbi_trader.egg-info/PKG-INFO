@@ -1,3 +1,17 @@
+Metadata-Version: 2.4
+Name: rbi-trader
+Version: 0.1.0
+Summary: Autonomous research, backtest, and Alpaca execution pipeline for BB Squeeze ADX trading.
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: alpaca-py>=0.43.2
+Requires-Dist: numpy>=2.2.6
+Requires-Dist: pandas>=2.3.3
+Requires-Dist: python-dotenv>=1.0.1
+Requires-Dist: PyYAML>=6.0.2
+Provides-Extra: dev
+Requires-Dist: pytest>=9.0.3; extra == "dev"
+
 # Harvard Algorithmic Trading with AI
 
 This repo now has an actual RBI pipeline instead of just a pile of scripts.
@@ -37,13 +51,6 @@ What changed:
 6. Start the loop:
 
    `python3 -m rbi_trader.cli trade-loop --config config/pipeline.example.yaml`
-
-For the BTC paper bot on this machine, use the launcher scripts instead:
-
-- `./scripts/rbi-paper-btc-start.sh`
-- `./scripts/rbi-paper-btc-status.sh`
-- `./scripts/rbi-paper-btc-stop.sh`
-- `./scripts/rbi-paper-btc-watchdog.sh`
 
 ## Safety defaults
 

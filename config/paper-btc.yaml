@@ -1,0 +1,63 @@
+strategy:
+  bb_window: 20
+  bb_std: 2.0
+  keltner_window: 20
+  keltner_atr_mult: 1.5
+  adx_period: 14
+  adx_threshold: 25
+  take_profit_pct: 0.05
+  stop_loss_pct: 0.03
+  allow_short: false
+
+research:
+  lookback_bars: 1000
+  train_fraction: 0.7
+  csv_path: backtest/data/BTC-6h-1000wks-data.csv
+  max_candidates: 24
+  metric: total_return_pct
+  output_dir: outputs/research
+  parameter_grid:
+    bb_window: [18, 20, 22]
+    bb_std: [1.8, 2.0]
+    keltner_window: [18, 20]
+    keltner_atr_mult: [1.2, 1.5]
+    adx_period: [12, 14]
+    adx_threshold: [20, 25]
+    take_profit_pct: [0.04, 0.05]
+    stop_loss_pct: [0.02, 0.03]
+
+risk:
+  trade_notional_usd: 25
+  max_position_notional_usd: 25
+  max_daily_loss_pct: 2.0
+  min_buying_power_usd: 25
+  stale_data_minutes: 720
+  allow_live: false
+  paper_only: true
+  require_flat_before_entry: true
+
+execution:
+  symbol: BTC/USD
+  asset_class: crypto
+  timeframe: 6Hour
+  poll_seconds: 60
+  dry_run: false
+  use_limit_orders: false
+  limit_price_buffer_bps: 10
+  extended_hours: false
+  data_feed: iex
+  state_path: outputs/runtime/paper-btc-state.json
+  journal_path: outputs/runtime/paper-btc-journal.jsonl
+
+alpaca:
+  api_key_env: ALPACA_API_KEY
+  secret_key_env: ALPACA_SECRET_KEY
+  paper: true
+
+notifications:
+  enabled: true
+  notify_all_decisions: false
+  webhook_url_env: RBI_WEBHOOK_URL
+  telegram_bot_token_env: RBI_TELEGRAM_BOT_TOKEN
+  telegram_chat_id_env: RBI_TELEGRAM_CHAT_ID
+  log_path: outputs/runtime/paper-btc-alerts.jsonl
